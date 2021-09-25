@@ -12,6 +12,7 @@ import { storeData } from "../storage";
 import axios from "axios";
 var Config = require("../config");
 export const mobileChanged = (text) => {
+  // console.log(text)
   return {
     type: MOBILE_CHANGED,
     payload: text,
