@@ -3,9 +3,6 @@ import {I18nManager} from 'react-native';
 I18nManager.allowRTL(false);
 import RootStack from '../routs';
 import {connect, Provider} from 'react-redux';
-import {applyMiddleware, createStore} from "redux";
-import reducers from "../reducers";
-import ReduxThunk from "redux-thunk";
 import store from '../store'
 class App extends Component {
     constructor(props) {

@@ -6,6 +6,7 @@ function saveToLocalStorage(state) {
   try {
     const serialisedState = JSON.stringify(state);
     localStorage.setItem("persistantState", serialisedState);
+    console.log(state)
   } catch (e) {
     console.warn(e);
   }
@@ -26,7 +27,7 @@ function loadFromLocalStorage() {
 
 // create our store from our rootReducers and use loadFromLocalStorage
 // to overwrite any values that we already have saved
-const store = createStore(rootReducers,applyMiddleware(ReduxThunk), loadFromLocalStorage());
+const store = createStore(rootReducers,loadFromLocalStorage(),applyMiddleware(ReduxThunk));
 
 // listen for store changes and use saveToLocalStorage to
 // save them to localStorage
