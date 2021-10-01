@@ -543,21 +543,21 @@ export default class Home extends Component {
                   renderItem={({ item }) => {
                     return (
                       <TouchableHighlight underlayColor={"#fff"} style={{ marginHorizontal: 10, marginVertical: 15 }}
-                                          onPress={(index) => this.toggleClick(index)}>
+                                          onPress={() => this.toggleClick(item.id)}>
                         <View style={[styles.touchableStyle, {
-                          backgroundColor: (this.state.flag === true ? "#e7f3ef" : "#f1f1f0"),
+                          backgroundColor: (item.id !== this.state.itemId ? "#e7f3ef" : "#f1f1f0"),
                           borderWidth: 1,
-                          borderColor: (this.state.flag === true ? "#01A545" : "#fff"),
-                          color: (this.state.flag === true ? "#fff" : "#01A545"),
+                          borderColor: (item.id !== this.state.itemId ? "#01A545" : "#fff"),
+                          color: (item.id !== this.state.itemId ? "#fff" : "#01A545"),
                         }]}>
                           <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
                             <Image source={item.image}
                                    style={{ width: 20, height: 20, borderRadius: 5, marginRight: 5 }}
-                                   tintColor={(this.state.flag === true ? "#01A545" : "#777")} />
+                                   tintColor={(item.id !== this.state.itemId ? "#01A545" : "#777")} />
                             <Text style={{
                               textAlign: "center",
                               fontFamily: "Dana-FaNum-Medium",
-                              color: (this.state.flag === true ? "#01A545" : "#777"),
+                              color: (item.id !== this.state.itemId ? "#01A545" : "#777"),
                             }}>
                               {item.title}
                             </Text>
