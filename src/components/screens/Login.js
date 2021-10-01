@@ -10,7 +10,7 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 const { width, height } = Dimensions.get('window');
 import { TextInput, Snackbar } from 'react-native-paper';
 import {connect} from "react-redux";
-import {mobileChanged,loginUser} from "../../action/AuthUser";
+import {mobileChanged,loginUser,tokenChanged} from "../../action/AuthUser";
 import AwesomeAlert from 'react-native-awesome-alerts';
  class Login extends Component {
     constructor(props) {
@@ -69,8 +69,10 @@ import AwesomeAlert from 'react-native-awesome-alerts';
 
      onInputVerifyCodeCompleted = (text) => {
         this.props.loginUser(this.props.mobile).then((response)=>{
+          console.log(response.data['data'].token)
             switch (response.status){
                 case 200:{
+                    this.props.tokenChanged(response.data['data'].token);
                     this.props.navigation.navigate('Dashboard')
                 } break;
                 case 403:{
@@ -193,6 +195,7 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
     mobileChanged,
     loginUser,
+    tokenChanged
 
 })(Login);
 const styles = StyleSheet.create({
